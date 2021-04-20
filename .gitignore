@@ -4,5 +4,9 @@ anomaly-env/
 codes/__*
 .idea/
 codes/.ipynb_checkpoints/
-datasets/.ipynb_checkpoints/
 codes/*.ipynb
+NAB-known-anomaly/
+res_ECG.csv
+res_ECG2.csv
+figures/
+datasets/
