@@ -1,6 +1,4 @@
 experiments/
-experiments_federated/
-anomaly-env/
 codes/__*
 .idea/
 codes/.ipynb_checkpoints/

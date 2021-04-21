@@ -32,7 +32,7 @@ def main():
     lstm_models = []
     model_vae_global = VAEmodel(config, "Global")
     sess_global = tf.Session(config=tf.ConfigProto())
-    for i in range(1, 10):
+    for i in range(1, 5):
         sess = tf.Session(config=tf.ConfigProto())
         sessions.append(sess)
         data.append(generator_fl(config, i))
@@ -43,8 +43,9 @@ def main():
     model_vae_global.load(sess_global)
     trainer_vae_global = vaeTrainer(sess_global, model_vae_global, data[0], config)
     lstm_model_global = lstmKerasModel("Global", config)
-    client_weights = [0.1] * 8
-    client_weights.append(0.2)
+    # client_weights = [0.1] * 8
+    client_weights = [0.25, 0.25, 0.25, 0.25]
+    # client_weights.append(0.2)
     aggregator = Aggregator(vae_trainers, trainer_vae_global, lstm_models, lstm_model_global, config, client_weights)
     aggregator.aggregate_vae()
     aggregator.aggregate_lstm()
