@@ -1,4 +1,5 @@
 import os
+import pickle
 import tensorflow as tf
 from data_loader import DataGenerator
 from models import VAEmodel, lstmKerasModel
@@ -33,7 +34,11 @@ class Aggregator:
                     for i in range(len(self.vae_trainers[0].model.train_vars_VAE)):
                         global_train_var_eval = np.zeros_like(self.vae_trainers[0].model.train_vars_VAE[i].eval(self.vae_trainers[0].sess))
                         for j in range(len(self.vae_trainers)):
-                            global_train_var_eval += np.multiply(self.weights[j], self.vae_trainers[j].model.train_vars_VAE[i].eval(self.vae_trainers[j].sess))
+                            if comm_round == 1:
+                                pickle.dump(self.vae_trainers[j].model.train_vars_VAE[i].eval(self.vae_trainers[j].sess), "Weights.h5")
+                                exit()
+                            else:
+                                global_train_var_eval += np.multiply(self.weights[j], self.vae_trainers[j].model.train_vars_VAE[i].eval(self.vae_trainers[j].sess))
                         self.global_vae_trainer.model.train_vars_VAE[i].load(global_train_var_eval, self.global_vae_trainer.sess)
                         # print(self.global_vae_trainer.model.train_vars_VAE[i].eval(self.global_vae_trainer.sess))
                 #save model global
