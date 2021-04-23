@@ -22,10 +22,10 @@ class DataGenerator(BaseDataGenerator):
                 data_dir = '../datasets/NAB-known-anomaly/'
                 data = np.load(data_dir + dataset + '_{}.npz'.format(j))
 
-                # normalise the dataset by training set mean and std
-                train_m = data['train_m']
-                train_std = data['train_std']
-                readings_normalised = (data['readings'] - train_m) / train_std
+                # # normalise the dataset by training set mean and std
+                # train_m = data['train_m']
+                # train_std = data['train_std']
+                # readings_normalised = (data['readings'] - train_m) / train_std
 
                 # slice training set into rolling windows
                 n_train_sample = len(data['training'])
