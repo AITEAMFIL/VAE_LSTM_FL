@@ -1,11 +1,11 @@
 {
-  "exp_name": "SCADA3",
-  "dataset": "scada3",
+  "exp_name": "SCADA2",
+  "dataset": "scada2",
   "y_scale": 5,
   "one_image": 0,
   "l_seq": 12,
   "l_win": 24,
-  "n_channel": 27,
+  "n_channel": 16,
   "TRAIN_VAE": 1,
   "TRAIN_LSTM": 1,
   "TRAIN_sigma": 0,
@@ -24,4 +24,3 @@
   "num_hidden_units": 512,
   "num_hidden_units_lstm": 64
 }
-
